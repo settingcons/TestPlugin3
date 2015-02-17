@@ -161,19 +161,13 @@ function test1() {
 function switchToLocationSettings1(){
     try{
         // To know if the WiFi is turned ON/OFF.
-        Diagnostic.prototype.switchToLocationSettings(switchToLocationSettingsSuccessCallback, switchToLocationSettingsErrorCallback);
+        Diagnostic.prototype.switchToLocationSettings();
 
-        function switchToLocationSettingsSuccessCallback(result) {
-            alert('bien');
-        }
-
-        function switchToLocationSettingsErrorCallback(error) {
-            alert("switchToLocationSettingsErrorCallback error: #" + error);
-        }
+        alert("hola");
 
     }
     catch (ex){
-        alert("isWifiEnabled1"+ex.message);
+        alert("switchToLocationSettings1"+ex.message);
     }
 }
 function isCameraEnabled1(){
