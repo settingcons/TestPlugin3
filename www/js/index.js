@@ -52,12 +52,10 @@ var app = {
 function test1() {
     try {
 
-        alert("test")
         // To know if the location is turned ON/OFF and if the app is allowed to use it.
         Diagnostic.prototype.isLocationEnabled(locationEnabledSuccessCallback, locationEnabledErrorCallback);
 
         function locationEnabledSuccessCallback(result) {
-            alert("locationEnabledSuccessCallback");
             if (result) {
                 //alert("Location ON");
                 document.getElementById('location').innerHTML = 'ON';
@@ -156,6 +154,132 @@ function test1() {
     }
     catch(ex) {
         alert("test error: #" +ex.message);
+    }
+
+}
+
+function isWifiEnabled1(){
+    try{
+        // To know if the WiFi is turned ON/OFF.
+        Diagnostic.prototype.isWifiEnabled(wifiEnabledSuccessCallback, wifiEnabledErrorCallback);
+
+        function wifiEnabledSuccessCallback(result) {
+            if (result) {
+                //alert("WiFi ON");
+                document.getElementById('wifi').innerHTML = 'ON';
+            }
+            else {
+                //alert("WiFi OFF");
+                document.getElementById('wifi').innerHTML = 'OFF';
+            }
+        }
+
+        function wifiEnabledErrorCallback(error) {
+            alert("wifiEnabledErrorCallback error: #" + error);
+        }
+
+    }
+    catch (ex){
+        alert("isWifiEnabled1"+ex.message);
+    }
+}
+function isCameraEnabled1(){
+    try{
+        // To know if the camera is enabled.
+        Diagnostic.prototype.isCameraEnabled(cameraEnabledSuccessCallback, cameraEnabledErrorCallback);
+
+        function cameraEnabledSuccessCallback(result) {
+            if (result) {
+                //alert("Camera ON");
+                document.getElementById('camera').innerHTML = 'ON';
+            }
+            else {
+                //alert("Camera OFF");
+                document.getElementById('camera').innerHTML = 'OFF';
+            }
+        }
+
+        function cameraEnabledErrorCallback(error) {
+            alert("cameraEnabledErrorCallback error: #" + error);
+        }
+    }
+    catch (ex){
+        alert("isCameraEnabled1"+ex.message);
+    }
+}
+
+
+function isLocationEnabled1() {
+    try {
+
+        // To know if the location is turned ON/OFF and if the app is allowed to use it.
+        Diagnostic.prototype.isLocationEnabled(locationEnabledSuccessCallback, locationEnabledErrorCallback);
+
+        function locationEnabledSuccessCallback(result) {
+            if (result) {
+                //alert("Location ON");
+                document.getElementById('location').innerHTML = 'ON';
+
+                //alert("Location Setting ON");
+                document.getElementById('locationSetting').innerHTML = 'ON';
+
+                //alert("Auth Location ON");
+                document.getElementById('locationAuthorization').innerHTML = 'ON';
+
+                function locationAuthorizedErrorCallback(error) {
+                    alert("locationAuthorizedErrorCallback error: #" + error);
+                }
+            }
+            else {
+                //alert("Location OFF");
+                document.getElementById('location').innerHTML = 'OFF';
+                // To know if the location is turned ON/OFF.
+                Diagnostic.prototype.isLocationEnabledSetting(locationEnabledSettingSuccessCallback, locationEnabledSettingErrorCallback);
+
+                function locationEnabledSettingSuccessCallback(result) {
+                    if (result) {
+                        //alert("Location Setting ON");
+                        document.getElementById('locationSetting').innerHTML = 'ON';
+                    }
+                    else {
+                        //alert("Location Setting OFF");
+                        document.getElementById('locationSetting').innerHTML = 'OFF';
+                    }
+                }
+
+                function locationEnabledSettingErrorCallback(error) {
+                    alert("locationEnabledSettingErrorCallback error: #" + error);
+                }
+
+                // To know if the app is allowed to use it.
+                Diagnostic.prototype.isLocationAuthorized(locationAuthorizedSuccessCallback, locationAuthorizedErrorCallback);
+
+                function locationAuthorizedSuccessCallback(result) {
+                    if (result) {
+                        //alert("Auth Location ON");
+                        document.getElementById('locationAuthorization').innerHTML = 'ON';
+                    }
+                    else {
+                        //alert("Auth Location OFF");
+                        document.getElementById('locationAuthorization').innerHTML = 'OFF';
+                    }
+                }
+
+                function locationAuthorizedErrorCallback(error) {
+                    alert("locationAuthorizedErrorCallback error: #" + error);
+                }
+            }
+        }
+
+        function locationEnabledErrorCallback(error) {
+            alert("locationEnabledErrorCallback error: #" + error);
+        }
+
+
+
+    }
+    catch(ex) {
+        alert("isLocationEnabled1: #" +ex.message);
     }
 
 }
